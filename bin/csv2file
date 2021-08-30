@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+const argv = require('minimist')(process.argv.slice(2));
+const csv2file = require('../src');
+
+process.title = 'csv2file';
+
+if (argv['help'] || argv['h']) {
+  const helpPage = `
+    usage: ${process.title} -i inputFile -o outputFile -t templateFile'
+    options:
+      -i --input      input file.
+      -o --output     output file.
+      -t --template   template file.
+      --columns       csv parse columns. (default: true)
+      -h --help       Print this list and exit.
+      -v --version    Print the version and exit.
+  `;
+  console.log(helpPage);
+  process.exit();
+}
+
+const input = argv['i'] || argv['input'],
+  template = argv['t'] || argv['template'],
+  output = argv['o'] || argv['output'],
+  columns = argv['columns'];
+
+(async () => {
+
+  if (!input || !template) {
+    console.log('Please insert valid arguments -i -t');
+    process.exit(1);
+  }
+  await csv2file({
+    input,
+    template,
+    output: output || `${input}.out`,
+  }, {
+    columns : columns !== undefined ? columns : true,
+  });
+})();
