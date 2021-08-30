@@ -6,11 +6,11 @@ process.title = 'csv2file';
 
 if (argv['help'] || argv['h']) {
   const helpPage = `
-    usage: ${process.title} -i inputFile -o outputFile -t templateFile'
+    usage: ${process.title} -i inputFile -o outputFile -t templateFile
     options:
       -i --input      input file.
       -o --output     output file.
-      -t --template   template file.
+      -t --template   mustache tmpl file. https://mustache.github.io/#demo
       --columns       csv parse columns. (default: true)
       -h --help       Print this list and exit.
       -v --version    Print the version and exit.
