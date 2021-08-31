@@ -15,6 +15,11 @@
     "mustache",
     "file"
   ],
+  "homepage": "https://github.com/jinkwon/csv2file",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinkwon/csv2file.git"
+  },
   "license": "MIT",
   "dependencies": {
     "csv-parse": "4.16.2",
