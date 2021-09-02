@@ -2,7 +2,7 @@ const mustache = require('mustache');
 const fs = require('fs');
 const parse = require('csv-parse');
 
-module.exports = async function csv2WTF(params, options) {
+async function csv2file(params, options) {
   const opt = {
     columns: true,
     ...options,
@@ -35,10 +35,8 @@ async function readFile(path) {
   return fs.readFileSync(path).toString('utf8');
 }
 
-async function writeFile(path, data) {
-  return fs.writeFileSync(path, data)
-}
-
 function render(template, data) {
   return mustache.render(template, data);
 }
+
+module.exports = csv2file;
