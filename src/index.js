@@ -18,12 +18,22 @@ async function csv2file(params, options) {
         columns: opt.columns,
       });
 
+      const uniqueMap = [];
+
       parser.on('readable', function () {
         while (1) {
           const data = this.read();
           if (!data) {
             break;
           }
+
+          if (opt.unique) {
+            if (uniqueMap.indexOf(data[opt.unique]) > -1) {
+              continue;
+            }
+            uniqueMap.push(data[opt.unique]);
+          }
+
           outputStm.write(render(template, data));
         }
         outputStm.on('finish', () => {
