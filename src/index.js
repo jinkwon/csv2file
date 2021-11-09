@@ -22,7 +22,6 @@ async function csv2file(params, options) {
         while (1) {
           const data = this.read();
           if (!data) {
-            console.log('1');
             break;
           }
           outputStm.write(render(template, data));
