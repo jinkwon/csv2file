@@ -3,32 +3,35 @@ const fs = require('fs');
 const parse = require('csv-parse');
 
 async function csv2file(params, options) {
-  const opt = {
-    columns: true,
-    ...options,
-  };
+  return new Promise((resolve, reject) => {
+    const opt = {
+      columns: true,
+      ...options,
+    };
 
-  try {
-    const input = await readFile(params.input);
-    const template = await readFile(params.template);
-    const outputStm = fs.createWriteStream(params.output);
+    try {
+      const input = await readFile(params.input);
+      const template = await readFile(params.template);
+      const outputStm = fs.createWriteStream(params.output);
 
-    const parser = parse(input, {
-      columns: opt.columns,
-    });
+      const parser = parse(input, {
+        columns: opt.columns,
+      });
 
-    parser.on('readable', function () {
-      while (1) {
-        const data = this.read();
-        if (!data) {
-          break;
+      parser.on('readable', function () {
+        while (1) {
+          const data = this.read();
+          if (!data) {
+            resolve();
+            break;
+          }
+          outputStm.write(render(template, data));
         }
-        outputStm.write(render(template, data) + '\n');
-      }
-    });
-  } catch (err) {
-    throw err;
-  }
+      });
+    } catch (err) {
+      reject(err);
+    }
+  });
 }
 
 async function readFile(path) {
