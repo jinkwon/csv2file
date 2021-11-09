@@ -22,11 +22,15 @@ async function csv2file(params, options) {
         while (1) {
           const data = this.read();
           if (!data) {
-            resolve();
+            console.log('1');
             break;
           }
           outputStm.write(render(template, data));
         }
+        outputStm.on('finish', () => {
+          resolve();
+        });
+        outputStm.end();
       });
     } catch (err) {
       reject(err);

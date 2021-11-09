@@ -2,7 +2,7 @@
   "name": "csv2file",
   "description": "CSV templating to file",
   "author": "jinkwon.lee <uzmystic@gmail.com>",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "src/index.js",
   "files": [
     "src/index.js"
