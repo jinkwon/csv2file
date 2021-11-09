@@ -37,7 +37,7 @@ npm install csv2file
 
 ### shell script
 ```bash
-csv2file -i ./example/example.csv -t ./example/template.sql
+csv2file -i ./sample/sample.csv -t ./sample/sample.tmpl.sql
 ```
 
 ### nodejs

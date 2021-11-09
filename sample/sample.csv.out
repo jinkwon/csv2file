@@ -2,14 +2,11 @@ insert into map_source.tbl_map_source_layer_fragment
   (geometry, map_source_layer_id, id, "name")
 values
   (ST_Transform(ST_GeomFromText('POINT(127.10973623874524 37.35283315785131)', 4326), 3857), 6, '', 'site1');
-
 insert into map_source.tbl_map_source_layer_fragment
   (geometry, map_source_layer_id, id, "name")
 values
   (ST_Transform(ST_GeomFromText('POINT(126.96725290258685 37.54505211168097)', 4326), 3857), 6, '', 'site2');
-
 insert into map_source.tbl_map_source_layer_fragment
   (geometry, map_source_layer_id, id, "name")
 values
   (ST_Transform(ST_GeomFromText('POINT( 127.25682722308225 37.65628827419806)', 4326), 3857), 6, '', 'site3');
-

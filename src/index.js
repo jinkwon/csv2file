@@ -3,7 +3,7 @@ const fs = require('fs');
 const parse = require('csv-parse');
 
 async function csv2file(params, options) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     const opt = {
       columns: true,
       ...options,
