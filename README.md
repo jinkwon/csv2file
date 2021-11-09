@@ -49,6 +49,8 @@ csv2file({
   input: './example.csv',
   template: './template.sql',
   output: './example.sql',
+}, {
+  unique: 'ID'
 });
 ```
 
